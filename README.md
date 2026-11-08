@@ -6,9 +6,8 @@ OLED Studio 是基于 **U8g2** 的单色 OLED UI 设计器。通过拖拽组件�
 
 发布版是一个 **HTML 文件**：用桌面 Chrome / Edge 打开即可使用，无需服务器、账号或网络。预览由真实 U8g2 C/WASM 渲染，不是用浏览器字体模拟 OLED 效果。
 
-[开始使用](#快速开始) · [功能概览](#功能概览) · [MCU 示例](example/README.md) · [AI 生成页面](docs/ai-project-guide.md) · [需求与验证](docs/audit.md)
-
-![OLED Studio 可视化设计界面](docs/screenshots/designer.png)
+[在线运行](https://rou-sir.github.io/oled-ui-designer/) · [开始使用](#快速开始) · [功能概览](#功能概览) · [MCU 示例](example/README.md) · [AI 生成页面](docs/ai-project-guide.md) · [需求与验证](docs/audit.md)
+![OLED Studio 可视化设计界面](docs/screenshots/designer.png) 
 
 ## 功能概览
 
@@ -65,7 +64,7 @@ OLED Studio 是基于 **U8g2** 的单色 OLED UI 设计器。通过拖拽组件�
 ### GitHub 在线版与离线发布
 
 GitHub Pages 部署启用后，在线设计器地址为：
-**https://rou-sir.github.io/oled-ui-designer/**。
+https://rou-sir.github.io/oled-ui-designer/
 这是浏览器端静态应用，项目仍保存在本地浏览器或用户授权目录，不会上传至 GitHub。在线域名与离线 HTML 的浏览器缓存相互独立；切换使用方式请通过项目包迁移。
 
 [Releases](https://github.com/Rou-sir/oled-ui-designer/releases) 提供单 HTML 和离线 ZIP。ZIP 包含设计器、第三方许可及三平台集成示例，解压后打开 `oled-studio.html`。MCU 示例仍由使用者自行测试。
