@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "ai-demo-project",
+  "name": "AI Monitor Demo",
+  "description": "Two editable pages, built-in ASCII fonts and an original XBM icon.",
+  "createdAt": "2026-11-08T00:00:00.000Z",
+  "modifiedAt": "2026-11-08T00:00:00.000Z",
+  "display": {
+    "width": 128, "height": 64, "rotation": 0,
+    "coordinateBits": 16, "bufferMode": "full", "controller": "SSD1306"
+  },
+  "defaultPageId": "ai-page-home",
+  "pages": [
+    {
+      "id": "ai-page-home",
+      "name": "Monitor",
+      "background": 0,
+      "components": [
+        { "id": "ai-home-title", "name": "ascii title", "type": "ascii", "visible": true, "locked": false, "bit": 1, "x": 4, "y": 3, "text": "MONITOR", "fontId": "builtin-6x10", "align": "left", "lineGap": 2, "transparent": true },
+        { "id": "ai-home-icon", "name": "image status", "type": "image", "visible": true, "locked": false, "bit": 1, "x": 108, "y": 6, "resourceId": "ai-image-icon", "transparent": true },
+        { "id": "ai-home-rule", "name": "line divider", "type": "line", "visible": true, "locked": false, "bit": 1, "points": [[4, 17], [123, 17]] },
+        { "id": "ai-home-value", "name": "ascii value", "type": "ascii", "visible": true, "locked": false, "bit": 1, "x": 4, "y": 22, "text": "25.0 C", "fontId": "builtin-9x15", "align": "left", "lineGap": 2, "transparent": true },
+        { "id": "ai-home-led", "name": "circle status", "type": "circle", "visible": true, "locked": false, "bit": 1, "x": 112, "y": 32, "radius": 6, "fill": false },
+        { "id": "ai-home-bar", "name": "rect progress frame", "type": "rect", "visible": true, "locked": false, "bit": 1, "x": 4, "y": 46, "width": 120, "height": 8, "radius": 0, "fill": false },
+        { "id": "ai-home-fill", "name": "rect progress fill", "type": "rect", "visible": true, "locked": false, "bit": 1, "x": 6, "y": 48, "width": 72, "height": 4, "radius": 0, "fill": true },
+        { "id": "ai-home-footer", "name": "ascii footer", "type": "ascii", "visible": true, "locked": false, "bit": 1, "x": 64, "y": 56, "text": "SENSOR OK", "fontId": "builtin-5x7", "align": "center", "lineGap": 0, "transparent": true }
+      ]
+    },
+    {
+      "id": "ai-page-shapes",
+      "name": "Shapes",
+      "background": 0,
+      "components": [
+        { "id": "ai-shapes-title", "name": "ascii title", "type": "ascii", "visible": true, "locked": false, "bit": 1, "x": 64, "y": 3, "text": "SHAPES", "fontId": "builtin-6x10", "align": "center", "lineGap": 2, "transparent": true },
+        { "id": "ai-shapes-triangle", "name": "triangle 1", "type": "triangle", "visible": true, "locked": false, "bit": 1, "points": [[10, 44], [25, 22], [40, 44]], "fill": false },
+        { "id": "ai-shapes-polygon", "name": "polygon 1", "type": "polygon", "visible": true, "locked": false, "bit": 1, "points": [[49, 24], [77, 24], [77, 46], [63, 35], [49, 46]], "fill": true },
+        { "id": "ai-shapes-rect", "name": "rect rounded", "type": "rect", "visible": true, "locked": false, "bit": 1, "x": 90, "y": 24, "width": 30, "height": 22, "radius": 4, "fill": false },
+        { "id": "ai-shapes-footer", "name": "ascii footer", "type": "ascii", "visible": true, "locked": false, "bit": 1, "x": 64, "y": 56, "text": "EDITABLE OBJECTS", "fontId": "builtin-5x7", "align": "center", "lineGap": 0, "transparent": true }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "ai-image-icon", "kind": "image", "name": "Status bars",
+      "license": "Original geometric icon; provided with this example.",
+      "width": 13, "height": 3, "dataBytes": [1, 16, 1, 16, 1, 16]
+    }
+  ]
+}

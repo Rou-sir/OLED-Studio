@@ -1,0 +1,16 @@
+node_modules/
+.tools/
+!dist/
+dist/*
+!dist/oled-studio.html
+!dist/U8g2-LICENSE.txt
+!dist/opentype-LICENSE.txt
+!dist/fflate-LICENSE.txt
+build/
+vendor/u8g2/
+vendor/arduino-avr/
+vendor/u8g2-arduino/
+test-results/
+release/
+_site/
+.vscode/

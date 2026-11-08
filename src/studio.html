@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OLED Studio · U8g2 UI 设计器</title><style>/*STYLE*/</style></head><body>
+<section id="home-view">
+<header class="home-header"><a class="brand" href="#" aria-label="OLED Studio 项目首页"><span class="brand-mark">O</span><strong>OLED Studio</strong><span class="badge">U8g2</span></a><span class="offline-label">本地工作空间 · 完全离线</span></header>
+<div class="home-content"><div class="home-intro"><div><p class="eyebrow">YOUR WORKSPACE</p><h1>我的项目</h1><p class="subtitle">从一块小屏幕，开始你的下一个设计。</p></div>
+<div class="buttons home-actions"><button data-action="open-directory">打开项目目录</button><button data-action="import-package">导入项目包</button><button id="new-project" class="primary">＋ 新建项目</button></div></div>
+<div class="library-heading"><span id="project-count">正在读取本地项目…</span><span>预览为项目默认页面</span></div>
+<div id="project-list" class="project-grid" aria-label="本地项目列表"></div>
+<p class="home-footnote">项目列表保存在当前浏览器中。请保留项目包或授权目录备份；删除卡片不会删除磁盘文件。</p></div></section>
+<section id="editor-view" hidden>
+<header class="editor-header"><button id="project-library" class="back-button" title="返回项目首页">← 项目</button><div class="editor-heading"><strong id="editor-project-name">新项目</strong><span id="editor-display-size"></span></div>
+<div class="header-actions"><button id="project-settings">项目设置</button><button id="resources">资源管理</button><button id="save-package">下载项目包</button><button id="export-code" class="primary">导出 UI 代码</button></div></header>
+<main id="editor-layout"><aside class="left-panel" id="left-panel"><nav class="sidebar-tabs" aria-label="左侧面板"><button id="layout-tab" aria-pressed="true">▤ 布局</button><button id="images-tab" aria-pressed="false">▧ 图片</button></nav><div id="layout-panel"><section class="panel-section page-section"><div class="panel-heading"><h2>页面管理</h2><span id="page-count"></span></div>
+<div class="buttons compact"><button id="new-page">＋ 添加</button><button id="copy-page">复制</button><button id="delete-page">删除</button></div><div id="pages"></div></section>
+<section class="panel-section"><div class="panel-heading"><h2>添加组件</h2><span id="component-type-count"></span></div><div id="component-tools"></div></section>
+<section class="panel-section layer-section"><div class="panel-heading"><h2>组件图层</h2><span id="component-count"></span></div><div class="buttons compact"><button id="copy-component">复制</button><button id="delete-component">删除</button>
+<button id="layer-up">上移</button><button id="layer-down">下移</button></div><div id="components"></div></section></div>
+<section id="images-panel" class="panel-section" hidden><div class="panel-heading"><h2>项目图片</h2><span id="sidebar-image-count"></span></div><button id="sidebar-add-image" class="primary">＋ 添加图片</button><input id="sidebar-image-search" aria-label="搜索项目图片" placeholder="搜索图片名称"><p class="subtitle">点击图片添加到当前页面</p><div id="sidebar-images"></div></section></aside>
+<div id="left-resizer" class="panel-resizer" role="separator" aria-label="调整左侧面板宽度" aria-orientation="vertical" aria-controls="left-panel" tabindex="0" title="拖动调整宽度 · 方向键调整 · 双击恢复"></div>
+<section class="workspace"><nav class="canvas-toolbar" aria-label="画布工具"><div class="toolbar-group"><button id="undo" title="Ctrl+Z">撤销</button><button id="redo" title="Ctrl+Y">重做</button></div><div class="toolbar-group"><button id="align-left">左对齐</button><button id="align-top">顶对齐</button></div>
+<div class="toolbar-group"><label>倍率 <input id="zoom" type="number" min="1" max="20" step="1" value="5"></label><label><input id="grid" type="checkbox" checked>网格</label></div>
+<div class="toolbar-group"><label><input id="snap-enabled" type="checkbox" checked>吸附 <input id="snap" type="number" min="1" max="32" value="1"></label><label><input id="preview-mode" type="checkbox">纯预览</label></div><details class="toolbar-menu"><summary>更多对齐</summary><div id="alignment-tools"></div></details><details id="preview-settings" class="toolbar-menu"><summary>预览设置</summary><div class="preview-settings-content"><label for="preview-color">亮像素颜色</label><input id="preview-color" type="color" value="#ebebeb"><button id="reset-preview-color" type="button">恢复默认</button><p>暗像素为黑色。仅影响当前画布，不影响项目、PNG 或代码导出。</p></div></details></nav>
+<div class="canvas-caption"><span id="canvas-page-name">首页</span><span>OLED · MONOCHROME</span></div>
+<div class="viewport"><div id="artboard"><canvas id="pixels"></canvas><canvas id="overlay"></canvas><div id="selection-guides" aria-label="选中组件边界参考坐标"></div></div></div>
+<div id="diagnostics"></div>
+<p class="hint">Shift 多选 · 拖动移动 · 控制点编辑 · 方向键微调 · Ctrl+Z/Y · 滚轮缩放 · 中键平移</p></section>
+<div id="right-resizer" class="panel-resizer" role="separator" aria-label="调整属性面板宽度" aria-orientation="vertical" aria-controls="right-panel" tabindex="0" title="拖动调整宽度 · 方向键调整 · 双击恢复"></div>
+<aside class="right-panel" id="right-panel"><div class="panel-heading"><h2>属性检查器</h2><span id="property-kind">页面</span></div><div id="properties"></div></aside></main></section>
+<footer class="status-bar"><div id="notice" role="status">正在加载离线 U8g2 原生运行时…</div><button id="cancel-io" hidden>取消项目包操作</button><div id="save-state" role="status"></div></footer>
+<dialog id="settings-dialog"><header><strong>项目 / 屏幕设置</strong><button id="close-settings">完成</button></header><div class="settings-content"><div id="project-properties"></div><h2>保存与备份</h2>
+<p class="subtitle">空目录保存当前项目；已有项目目录会打开其中的快照。</p><div class="buttons"><button id="open-directory">选择项目目录</button><button id="authorize">重新授权</button><button id="save-now">立即保存</button><button id="import-package">导入项目包</button><button id="export-png">导出 PNG</button></div></div></dialog>
+<dialog id="resource-dialog"><header><strong>项目资源管理器</strong><button id="close-resources">关闭</button></header>
+<div class="resource-layout"><section><nav class="resource-tabs" aria-label="资源分类"><button id="resource-images-tab" aria-pressed="true">图片 <span id="resource-image-count"></span></button><button id="resource-fonts-tab" aria-pressed="false">字库 <span id="resource-font-count"></span></button></nav><input id="resource-search" aria-label="搜索当前分类资源" placeholder="搜索图片名称"><div id="resource-list"></div></section>
+<section><div class="buttons"><button id="new-image">添加图片</button><button id="new-font" hidden>添加字库</button></div>
+<div id="resource-editor"></div></section></div></dialog>
+<input id="package-file" type="file" accept=".zip,.oled" hidden>
+<dialog id="export-dialog"><header><strong>导出 UI 代码</strong><button id="close-export">取消</button></header><div class="settings-content"><label class="field"><span>目标平台</span><select id="export-target"></select></label><p id="export-description" class="subtitle"></p><p>仅下载 UI 源码和头文件，不含 JSON、说明或示例；许可信息保留在源码注释。三平台硬件调用实例独立放在 example 文件夹，导出文件作为可替换的 UI 部分。</p><button id="confirm-export" class="primary">下载代码包</button></div></dialog>
+<dialog id="rename-dialog"><form id="rename-form"><header><strong>重命名项目</strong><button type="button" id="close-rename">取消</button></header><div class="settings-content"><label class="field"><span>项目名称</span><input id="rename-name" required maxlength="200"></label><button type="submit" class="primary">保存名称</button></div></form></dialog>
+<script>/*RUNTIME*/</script><script>/*APP*/</script></body></html>

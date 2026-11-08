@@ -1,0 +1,27 @@
+{
+  "name": "oled-ui-designer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && node scripts/build.mjs",
+    "build:native": "python scripts/build_native.py",
+    "build:targets": "python scripts/build_targets.py",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node scripts/test-browser.mjs",
+    "test:fonts": "node scripts/test-font-options.mjs",
+    "test:avr": "node scripts/test-avr.mjs",
+    "test:studio": "node scripts/test-studio.mjs"
+  },
+  "devDependencies": {
+    "@types/opentype.js": "^1.3.8",
+    "avr8js": "^0.21.0",
+    "esbuild": "^0.25.0",
+    "playwright": "^1.56.0",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "opentype.js": "^1.3.4"
+  }
+}
